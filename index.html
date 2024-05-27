@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erreur CORS Example</title>
+</head>
+<body>
+<h1>Test Erreur CORS</h1>
+<button id="fetchData">Fetch Data</button>
+<pre id="result"></pre>
+
+<script>
+    document.getElementById('fetchData').addEventListener('click', function() {
+        fetch('http://localhost/cors-example/backend/api.php')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('result').textContent = 'Erreur: ' + error;
+                console.error('Erreur:', error);
+            });
+    });
+</script>
+</body>
+</html>
